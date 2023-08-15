@@ -1,0 +1,14 @@
+@import "reset.css";
+
+body {
+    background-color: rgb(109, 182, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    border: 3px solid black;
+    margin-top: 5vh;
+    background-color: white;
+}
