@@ -3,9 +3,13 @@ const colorOptions = Array.from(
 );
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const lineWidth = document.getElementById('line-width')
-const color = document.getElementById('color')
-const modeBtn = document.getElementById('mode-btn')
+const lineWidth = document.getElementById('line-width');
+const color = document.getElementById('color');
+const modeBtn = document.getElementById('mode-btn');
+const destroyBtn = document.getElementById('destroy-btn');
+const eraserBtn = document.getElementById('eraser-btn');
+const fileInput = document.getElementById('file');
+const textInput = document.getElementById('text');
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
@@ -20,6 +24,7 @@ function onMove(event) {
         ctx.stroke();
         return;
     }
+    ctx.beginPath();
     ctx.moveTo(event.offsetX, event.offsetY);
 }
 
@@ -39,7 +44,6 @@ canvas.addEventListener("mouseleave", cancelPainting);
 // 선 굵기
 
 function onLineWidthChange(event) {
-    ctx.beginPath();
     ctx.lineWidth = event.target.value;
 }
 
@@ -48,7 +52,6 @@ lineWidth.addEventListener("change", onLineWidthChange)
 // 선 색상 #1
 
 function onColorChange(event) {
-    ctx.beginPath();
     ctx.strokeStyle = event.target.value;
     ctx.fillStyle = event.target.value;
 }
@@ -58,7 +61,6 @@ color.addEventListener("change", onColorChange)
 // 선 색상 #2
 
 function onColorClick(event) {
-    ctx.beginPath();
     const colorValue = event.target.dataset.color;
     ctx.strokeStyle = colorValue;
     ctx.fillStyle = colorValue;
@@ -82,8 +84,59 @@ function onModeClick() {
 function onCanvasClick() {
     if (isFilling) {
         ctx.fillRect(0,0, canvas.width, canvas.height)
+        isFilling = false;
     }
 }
 
 modeBtn.addEventListener("click", onModeClick)
 canvas.addEventListener("click", onCanvasClick)
+
+// 전체 지우개
+
+function onDestroyClick() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+}
+
+destroyBtn.addEventListener("click", onDestroyClick);
+
+// 부분 지우개 (하얀 선 그리기)
+
+function onEraseClick() {
+    ctx.strokeStyle = "white";
+    isFilling = false;
+    modeBtn.innerText = "Fill"
+}
+
+eraserBtn.addEventListener("click", onEraseClick);
+
+//밈 만들기
+
+// 이미지 추가
+
+function onFileChange(event) {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.src = url;
+    image.onload = function () {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        fileInput.value = null;
+    };
+}
+
+fileInput.addEventListener("change", onFileChange);
+
+// 텍스트 추가
+
+function onDoubleClick(event) {
+    const text = textInput.value;
+    if (text !== "") {
+        ctx.save();
+        ctx.font = "68px serif"
+        ctx.fillText(text, event.offsetX, event.offsetY);
+        ctx.restore();
+    }
+}
+
+canvas.addEventListener("dblclick", onDoubleClick);
