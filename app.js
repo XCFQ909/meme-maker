@@ -10,6 +10,7 @@ const destroyBtn = document.getElementById('destroy-btn');
 const eraserBtn = document.getElementById('eraser-btn');
 const fileInput = document.getElementById('file');
 const textInput = document.getElementById('text');
+const saveBtn = document.getElementById("save");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
@@ -140,3 +141,15 @@ function onDoubleClick(event) {
 }
 
 canvas.addEventListener("dblclick", onDoubleClick);
+
+// 만든 이미지 저장하기
+
+function onSaveClick() {
+    const url = canvas.toDataURL();
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "myDrawing.png";
+    a.click();
+}
+
+saveBtn.addEventListener("click", onSaveClick);
