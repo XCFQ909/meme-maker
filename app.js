@@ -20,7 +20,8 @@ let isFilling = false;
 // 선 그리기
 
 function onMove(event) {
-    if (isPainting) {
+    if (isFilling) {}
+    else if(isPainting) {
         ctx.lineTo(event.offsetX, event.offsetY);
         ctx.stroke();
         return;
@@ -139,7 +140,7 @@ function textAdd(event) {
     }
 }
 
-canvas.addEventListener("click", textAdd);
+canvas.addEventListener("dblclick", textAdd);
 
 // 만든 이미지 저장하기
 
