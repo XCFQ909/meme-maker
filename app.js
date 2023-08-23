@@ -2,22 +2,27 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
+ctx.lineWidth = 2;
+let isPainting = false;
 
+function onMove(event) {
+    if (isPainting) {
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        return;
+    }
+    ctx.moveTo(event.offsetX, event.offsetY);
+}
 
-ctx.fillRect(210 - 40, 170, 15, 200);
-ctx.fillRect(350 - 40, 170, 15, 200);
-ctx.fillRect(260 - 40, 170, 60, 200);
+function startPainting() {
+    isPainting = true;
+}
 
-ctx.arc(250, 100, 50, 0, 2 * Math.PI);
-ctx.fill();
+function cancelPainting() {
+    isPainting = false;
+}
 
-ctx.beginPath();
-ctx.fillStyle = "white";
-ctx.arc(250 - 20, 95, 8, 0, Math.PI);
-ctx.arc(250 + 20, 95, 8, 0, Math.PI);
-ctx.fill();
-
-ctx.beginPath();
-ctx.fillStyle = "black";
-ctx.fillRect(220,400, 15,200);
-ctx.fillRect(235 + 40,400, 15,200);
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
