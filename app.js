@@ -75,17 +75,16 @@ colorOptions.forEach((colorOption) => colorOption.addEventListener("click", onCo
 function onModeClick() {
     if (isFilling) {
         isFilling = false;
-        modeBtn.innerText = "Fill";
+        modeBtn.innerText = "Drawing Mode";
     } else {
         isFilling = true;
-        modeBtn.innerText = "Draw";
+        modeBtn.innerText = "Filling Mode";
     }
 }
 
 function onCanvasClick() {
     if (isFilling) {
         ctx.fillRect(0,0, canvas.width, canvas.height)
-        isFilling = false;
     }
 }
 
@@ -106,7 +105,7 @@ destroyBtn.addEventListener("click", onDestroyClick);
 function onEraseClick() {
     ctx.strokeStyle = "white";
     isFilling = false;
-    modeBtn.innerText = "Fill"
+    modeBtn.innerText = "Erasing Mode"
 }
 
 eraserBtn.addEventListener("click", onEraseClick);
@@ -130,7 +129,7 @@ fileInput.addEventListener("change", onFileChange);
 
 // 텍스트 추가
 
-function onDoubleClick(event) {
+function textAdd(event) {
     const text = textInput.value;
     if (text !== "") {
         ctx.save();
@@ -140,7 +139,7 @@ function onDoubleClick(event) {
     }
 }
 
-canvas.addEventListener("dblclick", onDoubleClick);
+canvas.addEventListener("click", textAdd);
 
 // 만든 이미지 저장하기
 
