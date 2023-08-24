@@ -169,7 +169,7 @@ function textAdd(event) {
     if (text !== "") {
         ctx.save();
         ctx.fillStyle = localStorage.getItem("currentColor")
-        ctx.strokeStyleStyle = localStorage.getItem("currentColor")
+        ctx.strokeStyle = localStorage.getItem("currentColor")
         ctx.font = "68px serif"
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore();

@@ -26,6 +26,9 @@ body {
     white-space: nowrap;
     top: -40px;
     left: 65px;
+    color: white;
+    text-shadow: 0px 0px 4px black;
+    font-size: large;
 }
 
 #color {
@@ -84,7 +87,7 @@ button {
 button:hover {
     opacity: 0.85;
 }
-/*  */
+/* btns 속 */
 
 .btns {
     display: flex;
@@ -97,8 +100,6 @@ button:hover {
 
 input#line-width {
     width: 180px;
-    margin-top: 7px;
-    margin-bottom: 170px;
 }
 #line-width-label {
     color: white;
@@ -128,8 +129,6 @@ input#text {
     border: 20px;
     background-color: white;
     border-radius: 10px;
-    margin-top: 7px;
-    margin-bottom: 200px;
 }
 #text-input-label {
     color: white;
@@ -201,6 +200,37 @@ input#text {
     right: 10px;
     opacity: 0.8;
     pointer-events: none
+}
+
+/* 폰트 종류 셀렉트 */
+
+#font-select-span {
+    color: white;
+    text-shadow: 0px 0px 4px black;
+}
+
+#font-select {
+    border-radius: 3px;
+    font-size: 16px;
+    color: gray;
+    border: none;
+    text-align: center;
+}
+
+/* 폰트 크기 입력 */
+
+#font-size-span {
+    color: white;
+    text-shadow: 0px 0px 4px black;
+}
+
+#fontSizes {    
+    text-align: center;
+    border-radius: 3px;
+    font-size: 16px;
+    color: gray;
+    border: none;
+    width: 80px;
 }
 
 /* media query */

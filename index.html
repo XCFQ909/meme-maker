@@ -19,43 +19,8 @@
         <div class="color-options">
             <div
             class="color-option"
-            style="background-color: #1abc9c"
-            data-color="#1abc9c"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #3498db"
+            style="background-color: #D71313"
             data-color="#3498db"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #34495e"
-            data-color="#34495e"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #27ae60"
-            data-color="#27ae60"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #8e44ad"
-            data-color="#8e44ad"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #f1c40f"
-            data-color="#f1c40f"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #e74c3c"
-            data-color="#e74c3c"
-            ></div>
-            <div
-            class="color-option"
-            style="background-color: #95a5a6"
-            data-color="#95a5a6"
             ></div>
             <div
             class="color-option"
@@ -64,26 +29,77 @@
             ></div>
             <div
             class="color-option"
-            style="background-color: #2ecc71"
-            data-color="#2ecc71"
-            ></div>
-            <div
-            class="color-option"
             style="background-color: #e67e22"
             data-color="#e67e22"
             ></div>
             <div
             class="color-option"
-            style="background-color: navy"
-            data-color="#e67e22"
+            style="background-color: #f1c40f"
+            data-color="#f1c40f"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #8EAC50"
+            data-color="#8EAC50"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #17594A"
+            data-color="#17594A"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #8CABFF"
+            data-color="#8CABFF"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #525FE1"
+            data-color="#525FE1"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #0D1282"
+            data-color="#0D1282"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #8e44ad"
+            data-color="#8e44ad"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #34495e"
+            data-color="#34495e"
+            ></div>
+            <div
+            class="color-option"
+            style="background-color: #95a5a6"
+            data-color="#95a5a6"
             ></div>
         </div>
         <canvas></canvas>
         <div class="btns">
+            <button id="fill-circle-button"><i class="fa-solid fa-circle"></i></button>
+            <button id="stroke-circle-button"><i class="fa-regular fa-circle"></i></button>
+            <button id="fill-square-button"><i class="fa-solid fa-square"></i></button>
+            <button id="stroke-square-button"><i class="fa-regular fa-square"></i></button>
             <span id="line-width-label">Adjust Line Width</span>
             <input id="line-width" type="range" min="1" max="30" value="5" step="0.1"/>
             <span id="text-input-label" >Add Text with Double Click</span>
             <input type="text" placeholder="Write Text Here" id="text" />
+            <span id="font-select-span">Font Family</span>
+            <select id="font-select" >
+                <option value="Arial">Arial</option>
+                <option value="serif">serif</option>
+                <option value="Veranda">Veranda</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+            <span id="font-size-span">Font Size</span>
+            <input type="number" min="1" value="25" id="fontSizes">
+            <button id="stroke-text-button">Stroke Text</button>
+            <button id="fill-text-button">Fill Text</button>
             <label for="file">
                 Add Photo
                 <input type="file" accept="image/*" id="file"/>
@@ -102,5 +118,9 @@
         <button id="save">Download image</button>  
     </div>  
     <script src="app.js"></script>
+    <script 
+    src="https://kit.fontawesome.com/12d457089a.js" 
+    crossorigin="anonymous"
+    ></script>
 </body>
 </html>
