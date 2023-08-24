@@ -24,8 +24,8 @@ body {
 #color-notice {
     position: absolute;
     white-space: nowrap;
-    top: -40px;
-    left: 65px;
+    top: -50px;
+    left: -170px;
     color: white;
 }
 
@@ -44,12 +44,12 @@ body {
     flex-direction: column;
     gap: 10px;
     position: absolute;
-    left: -100px;
+    left: -70px;
 }
 
 .color-option {
-    width: 45px;
-    height: 45px;
+    width: 37px;
+    height: 37px;
     cursor: pointer;
     border-radius: 50%;
     border: 3px solid white;
@@ -99,8 +99,8 @@ span {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    left: 830px;
-    top: 160px;
+    left: 630px;
+    top: 90px;
 }
 
 
@@ -186,7 +186,7 @@ input#text {
     flex-direction: column-reverse;
     align-items: flex-start;
     position: absolute;
-    left: 830px;
+    left: 630px;
     top: 6px;
     gap: 30px;
 }
@@ -302,7 +302,7 @@ input#text {
 
 
 
-@media screen and (max-width: 1380px) {
+@media screen and (max-width: 1240px) {
     #media {
         position: absolute;
         z-index: 100;

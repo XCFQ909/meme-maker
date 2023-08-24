@@ -18,8 +18,8 @@ const fontFamilyInput = document.getElementById("font-select");
 const fontSizeInput = document.getElementById("fontSizes");
 const textStrokeBtn = document.getElementById("stroke-text-button");
 const textFillBtn = document.getElementById("fill-text-button");
-canvas.width = 800;
-canvas.height = 800;
+canvas.width = 600;
+canvas.height = 600;
 ctx.lineWidth = lineWidth.value;
 let isDrawing = false;
 let isFilling = false;
@@ -122,6 +122,7 @@ destroyBtn.addEventListener("click", onDestroyClick);
 function onEraseClick() {
     ctx.strokeStyle = "white";
     isFilling = false;
+    isPainting = false;
     modeBtn.innerText = "Erasing Mode"
 }
 
