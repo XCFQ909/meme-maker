@@ -1,8 +1,8 @@
 @import "reset.css";
 
 body {
-    gap: 20px;
-    padding: 20px;
+    height: 100vh;
+    width: 100vw;
     background-color: gainsboro;
     display: flex;
     justify-content: center;
@@ -10,25 +10,40 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* column no.1 colors */
 
-#colors {
+#main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+/* column no.1 colors */
+
+#color-notice {
+    position: absolute;
+    white-space: nowrap;
+    top: -40px;
+    left: 65px;
 }
 
 #color {
     margin: 10px 0 ;
     background-color: white;
     border: none;
-    height: 25px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: -60px;
+    left: 18px;
 }
 .color-options {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    position: absolute;
+    left: -90px;
 }
 
 .color-option {
@@ -47,18 +62,12 @@ body {
 /* column no.2 canvas */
 
 canvas {
-    margin-top: 5vh;
     background-color: white;
     border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(128, 128, 128, 0.767);
 }
 
-/* column no.3-1 buttons */
-
-.btns {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+/* column no.3-1 buttons*/
 
 button {
     all: unset;
@@ -75,8 +84,35 @@ button {
 button:hover {
     opacity: 0.85;
 }
+/*  */
 
-/* column no.3-2 inputs */
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    left: 830px;
+    top: 250px;
+}
+
+input#line-width {
+    width: 180px;
+}
+#line-width-label {
+    margin-top: 7px;
+    margin-bottom: 170px;
+}
+
+input#file {
+    display: none;
+}
+.btns label {
+    background-color: white;
+    padding: 10px;
+    width: 85px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 input#text {
     all: unset;
@@ -86,14 +122,106 @@ input#text {
     background-color: white;
     border-radius: 10px;
 }
-input#file {
+#text-input-label {
+    margin-top: 7px;
+    margin-bottom: 200px;
+}
+
+
+/* save, destroy */
+
+#save {
+    position: absolute;
+    white-space: nowrap;
+    bottom: -40px;
+    left: 660px;
+    padding: 8px;
+}
+
+#destroy-btn {
+    background-color: crimson;
+    position: absolute;
+    left: 716px;
+    top: -49px;
+    padding: 0;
+    height: 30px;
+    width: 80px;
+    border-radius: 0;
+    font-size: larger;
+    border: 3px solid black;
+}
+
+/* mode */
+#mode {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    position: absolute;
+    left: 830px;
+    top: 20px;
+    gap: 30px;
+}
+
+
+.flex-case {
+    display: flex;
+    gap: 15px;
+}
+
+.mode-btns {
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+/* 모드 버튼만 따로 */
+
+#mode-btn {
+    color: white;
+    padding: 10px;
+    width: 110px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: royalblue;
+    white-space: nowrap;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.8;
+    pointer-events: none
+}
+
+/* media query */
+#media {
     display: none;
 }
 
-.btns label {
-    background-color: white;
-    padding: 10px;
-    width: 85px;
-    border-radius: 10px;
-    cursor: pointer;
+
+@media screen and (max-width: 1299px) {
+    #media {
+        position: fixed;
+        top: 0;
+        box-sizing: border-box;
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        background-color: beige;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+    }
+}
+
+/* header */
+
+#logo {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
 }

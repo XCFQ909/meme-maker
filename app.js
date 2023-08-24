@@ -11,6 +11,8 @@ const eraserBtn = document.getElementById('eraser-btn');
 const fileInput = document.getElementById('file');
 const textInput = document.getElementById('text');
 const saveBtn = document.getElementById("save");
+const fillBtn = document.getElementById("fill-btn");
+const drawBtn = document.getElementById("draw-btn");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
@@ -56,6 +58,7 @@ lineWidth.addEventListener("change", onLineWidthChange)
 function onColorChange(event) {
     ctx.strokeStyle = event.target.value;
     ctx.fillStyle = event.target.value;
+    localStorage.setItem("currentColor", event.target.value)
 }
 
 color.addEventListener("change", onColorChange)
@@ -64,6 +67,7 @@ color.addEventListener("change", onColorChange)
 
 function onColorClick(event) {
     const colorValue = event.target.dataset.color;
+    localStorage.setItem("currentColor", colorValue)
     ctx.strokeStyle = colorValue;
     ctx.fillStyle = colorValue;
     color.value = colorValue;
@@ -73,15 +77,6 @@ colorOptions.forEach((colorOption) => colorOption.addEventListener("click", onCo
 
 // 그림판 전체 색상
 
-function onModeClick() {
-    if (isFilling) {
-        isFilling = false;
-        modeBtn.innerText = "Drawing Mode";
-    } else {
-        isFilling = true;
-        modeBtn.innerText = "Filling Mode";
-    }
-}
 
 function onCanvasClick() {
     if (isFilling) {
@@ -89,7 +84,7 @@ function onCanvasClick() {
     }
 }
 
-modeBtn.addEventListener("click", onModeClick)
+
 canvas.addEventListener("click", onCanvasClick)
 
 // 전체 지우개
@@ -111,6 +106,22 @@ function onEraseClick() {
 
 eraserBtn.addEventListener("click", onEraseClick);
 
+// draw버튼, fill 버튼 추가
+
+function onDrawBtnClick() {
+    colorNow = localStorage.getItem("currentColor")
+    isFilling = false;
+    ctx.strokeStyle = colorNow;    
+    modeBtn.innerText = "Drawing Mode"
+}
+
+function onFillBtnClick() {
+    isFilling = true;
+    modeBtn.innerText = "Filling Mode"
+}
+
+drawBtn.addEventListener("click", onDrawBtnClick)
+fillBtn.addEventListener("click", onFillBtnClick)
 //밈 만들기
 
 // 이미지 추가
@@ -153,3 +164,8 @@ function onSaveClick() {
 }
 
 saveBtn.addEventListener("click", onSaveClick);
+
+// 폰트 저장 시도
+let f = new FontFace('old standard tt', url('oldstandardtt-regular-webfont.woff'))
+
+f.load();
