@@ -237,3 +237,5 @@ function fontSizeChange(event) {
 
 fontFamilyInput.addEventListener("change", fontFamilyChange)
 fontSizeInput.addEventListener("change", fontSizeChange)
+
+// 씨바 이거 왜 안 되냐
