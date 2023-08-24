@@ -14,12 +14,19 @@ const saveBtn = document.getElementById("save");
 const fillBtn = document.getElementById("fill-btn");
 const drawBtn = document.getElementById("draw-btn");
 const paintBtn = document.getElementById("paint-btn");
+const fontFamilyInput = document.getElementById("font-select");
+const fontSizeInput = document.getElementById("fontSizes");
+const textStrokeBtn = document.getElementById("stroke-text-button");
+const textFillBtn = document.getElementById("fill-text-button");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
 let isDrawing = false;
 let isFilling = false;
 let isPainting = false;
+let textStroking = false;
+let fontFamily = "Arial";
+let fontSize = "25";
 
 // 선 그리기
 //  + Paint 작업
@@ -166,12 +173,19 @@ fileInput.addEventListener("change", onFileChange);
 
 function textAdd(event) {
     const text = textInput.value;
-    if (text !== "") {
+    if (text !== "" && textStroking === false) {
         ctx.save();
         ctx.fillStyle = localStorage.getItem("currentColor")
         ctx.strokeStyle = localStorage.getItem("currentColor")
-        ctx.font = "68px serif"
+        ctx.font = `${fontSize}px ${fontFamily}`;
         ctx.fillText(text, event.offsetX, event.offsetY);
+        ctx.restore();
+    } else if (text !== "" && textStroking) {
+        ctx.save();
+        ctx.fillStyle = localStorage.getItem("currentColor")
+        ctx.strokeStyle = localStorage.getItem("currentColor")
+        ctx.font = `${fontSize}px ${fontFamily}`;
+        ctx.strokeText(text, event.offsetX, event.offsetY);
         ctx.restore();
     }
 }
@@ -189,3 +203,36 @@ function onSaveClick() {
 }
 
 saveBtn.addEventListener("click", onSaveClick);
+
+// 텍스트에 Feature 추가 section
+// 1. stroke Text 버튼, Fill text 버튼
+
+function onTextStrokeClick() {
+    textStrokeBtn.style.backgroundColor = "royalblue";
+    textFillBtn.style.backgroundColor = "#8FA3DF";
+    textStroking = true;
+}
+
+textStrokeBtn.addEventListener("click", onTextStrokeClick)
+
+function onTextFillClick() {
+    textStrokeBtn.style.backgroundColor = "#8FA3DF";
+    textFillBtn.style.backgroundColor = "royalblue";
+    textStroking = false;
+}
+
+textFillBtn.addEventListener("click", onTextFillClick)
+
+// font Family, Font size input가 변할 때마다 저장
+
+function fontFamilyChange(event) {
+    fontFamily = event.target.value;
+    console.log(fontFamily);
+}
+function fontSizeChange(event) {
+    fontSize = event.target.value;
+    console.log(fontSize);
+}
+
+fontFamilyInput.addEventListener("change", fontFamilyChange)
+fontSizeInput.addEventListener("change", fontSizeChange)
