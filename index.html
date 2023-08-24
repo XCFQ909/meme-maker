@@ -10,12 +10,11 @@
 <body>
     <div id="media">
         <span>Your Screen is Too Small :(</span>
-        <span>min-width: 1300px</span>
     </div>
 
     <div id="main">
         <input type="color" id="color" />
-        <span id="color-notice">: Choose your color</span>
+        <span id="color-notice">← Choose your color</span>
         <div class="color-options">
             <div
             class="color-option"
@@ -80,26 +79,30 @@
         </div>
         <canvas></canvas>
         <div class="btns">
-            <button id="fill-circle-button"><i class="fa-solid fa-circle"></i></button>
-            <button id="stroke-circle-button"><i class="fa-regular fa-circle"></i></button>
-            <button id="fill-square-button"><i class="fa-solid fa-square"></i></button>
-            <button id="stroke-square-button"><i class="fa-regular fa-square"></i></button>
-            <span id="line-width-label">Adjust Line Width</span>
-            <input id="line-width" type="range" min="1" max="30" value="5" step="0.1"/>
-            <span id="text-input-label" >Add Text with Double Click</span>
-            <input type="text" placeholder="Write Text Here" id="text" />
-            <span id="font-select-span">Font Family</span>
-            <select id="font-select" >
-                <option value="Arial">Arial</option>
-                <option value="serif">serif</option>
-                <option value="Veranda">Veranda</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Times New Roman">Times New Roman</option>
-            </select>
-            <span id="font-size-span">Font Size</span>
-            <input type="number" min="1" value="25" id="fontSizes">
-            <button id="stroke-text-button">Stroke Text</button>
-            <button id="fill-text-button">Fill Text</button>
+            <div id="line-something">
+                <span id="line-width-label">Adjust Line Width</span>
+                <input id="line-width" type="range" min="1" max="30" value="5" step="0.1"/>                
+            </div>
+            <div id="text-section">
+                <span id="text-input-label" >*Add Text with Double Click*</span>
+                <input type="text" placeholder="Write Text Here" id="text" />
+                <span id="font-select-span">Font Family</span>
+                <select id="font-select" >
+                    <option value="Arial">Arial</option>
+                    <option value="serif">serif</option>
+                    <option value="Veranda">Veranda</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+                <span id="font-size-span">Font Size</span>
+                <input type="number" min="1" value="25" id="fontSizes">
+                <div class="two-buttons">
+                    <button id="stroke-text-button">Stroke Text</button>
+                    <p> /</p>
+                    <button id="fill-text-button">Fill Text</button>                      
+                </div>
+              
+            </div>
             <label for="file">
                 Add Photo
                 <input type="file" accept="image/*" id="file"/>

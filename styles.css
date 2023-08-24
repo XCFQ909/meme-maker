@@ -27,8 +27,6 @@ body {
     top: -40px;
     left: 65px;
     color: white;
-    text-shadow: 0px 0px 4px black;
-    font-size: large;
 }
 
 #color {
@@ -87,6 +85,13 @@ button {
 button:hover {
     opacity: 0.85;
 }
+
+span {
+    border-radius: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 10px;
+    border-radius: 15px;
+}
 /* btns 속 */
 
 .btns {
@@ -95,15 +100,15 @@ button:hover {
     align-items: flex-start;
     position: absolute;
     left: 830px;
-    top: 250px;
+    top: 160px;
 }
+
 
 input#line-width {
     width: 180px;
 }
 #line-width-label {
     color: white;
-    text-shadow: 0px 0px 4px black;
 }
 
 input#file {
@@ -129,10 +134,10 @@ input#text {
     border: 20px;
     background-color: white;
     border-radius: 10px;
+    width: 91%;
 }
 #text-input-label {
     color: white;
-    text-shadow: 0px 0px 4px black;
     white-space: nowrap;
 }
 
@@ -159,6 +164,20 @@ input#text {
     border: 3px solid black;
     color: black;
     font-weight: 800; 
+}
+
+/* 텍스트 모드 버튼 */
+
+#stroke-text-button {
+    height: 20px;
+    width: 90px;
+    border-radius: 15px;
+    opacity: 0.5;
+}
+#fill-text-button {
+    height: 20px;
+    width: 70px;
+    border-radius: 15px;
 }
 
 /* mode */
@@ -206,7 +225,9 @@ input#text {
 
 #font-select-span {
     color: white;
-    text-shadow: 0px 0px 4px black;
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #font-select {
@@ -215,13 +236,15 @@ input#text {
     color: gray;
     border: none;
     text-align: center;
+    width: fit-content;
 }
 
 /* 폰트 크기 입력 */
 
 #font-size-span {
     color: white;
-    text-shadow: 0px 0px 4px black;
+    width: fit-content;
+    margin: 10px 0;
 }
 
 #fontSizes {    
@@ -233,13 +256,53 @@ input#text {
     width: 80px;
 }
 
+/* 마지막 CSS 분류 못 하겠어. 너무 복잡해져버림. */
+.btns {
+    height: 500px;
+    justify-content: space-between;
+}
+
+#line-something {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#line-width-label {
+    width: 137px;
+    text-align: center;
+}
+
+
+#text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.two-buttons {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.two-buttons p {
+    color: royalblue;
+    font-weight: bold;
+    font-size: larger;
+}
+
 /* media query */
 #media {
     display: none;
 }
 
 
-@media screen and (max-width: 1299px) {
+
+@media screen and (max-width: 1380px) {
     #media {
         position: absolute;
         z-index: 100;
