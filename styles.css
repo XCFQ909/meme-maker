@@ -97,21 +97,28 @@ button:hover {
 
 input#line-width {
     width: 180px;
-}
-#line-width-label {
     margin-top: 7px;
     margin-bottom: 170px;
+}
+#line-width-label {
+    color: white;
+    text-shadow: 0px 0px 4px black;
 }
 
 input#file {
     display: none;
 }
 .btns label {
-    background-color: white;
+    background-color: royalblue;
+    color: white;
     padding: 10px;
     width: 85px;
     border-radius: 10px;
     cursor: pointer;
+    transition: opacity ease-in-out .1s;
+}
+.btns label:hover {
+    opacity: 0.85;
 }
 
 input#text {
@@ -121,10 +128,13 @@ input#text {
     border: 20px;
     background-color: white;
     border-radius: 10px;
-}
-#text-input-label {
     margin-top: 7px;
     margin-bottom: 200px;
+}
+#text-input-label {
+    color: white;
+    text-shadow: 0px 0px 4px black;
+    white-space: nowrap;
 }
 
 
@@ -144,11 +154,12 @@ input#text {
     top: -49px;
     right: 10px;
     height: 30px;
-    width: 40px;
-    border-radius: 0;
+    width: 30px;
+    border-radius: 3px;
     font-size: larger;
     border: 3px solid black;
     color: black;
+    font-weight: 800; 
 }
 
 /* mode */

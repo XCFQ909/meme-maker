@@ -13,17 +13,24 @@ const textInput = document.getElementById('text');
 const saveBtn = document.getElementById("save");
 const fillBtn = document.getElementById("fill-btn");
 const drawBtn = document.getElementById("draw-btn");
+const paintBtn = document.getElementById("paint-btn");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = lineWidth.value;
-let isPainting = false;
+let isDrawing = false;
 let isFilling = false;
+let isPainting = false;
 
 // 선 그리기
-
+//  + Paint 작업
 function onMove(event) {
     if (isFilling) {}
-    else if(isPainting) {
+    else if (isPainting && isDrawing) {
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.fill();
+        return;
+    }
+    else if(isDrawing) {
         ctx.lineTo(event.offsetX, event.offsetY);
         ctx.stroke();
         return;
@@ -33,17 +40,21 @@ function onMove(event) {
 }
 
 function startPainting() {
-    isPainting = true;
+    isDrawing = true;
 }
 
 function cancelPainting() {
-    isPainting = false;
+    isDrawing = false;
 }
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
+
+
+
+
 
 // 선 굵기
 
@@ -90,8 +101,11 @@ canvas.addEventListener("click", onCanvasClick)
 // 전체 지우개
 
 function onDestroyClick() {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0,0, canvas.width, canvas.height);
+    if(window.confirm("확인을 누르면 모든 작업이 삭제됩니다.")) {
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0, canvas.width, canvas.height); 
+    }
+
 }
 
 destroyBtn.addEventListener("click", onDestroyClick);
@@ -106,20 +120,29 @@ function onEraseClick() {
 
 eraserBtn.addEventListener("click", onEraseClick);
 
-// draw버튼, fill 버튼 추가
+// draw버튼, fill 버튼 추가 P.S. Paint버튼
 
 function onDrawBtnClick() {
     colorNow = localStorage.getItem("currentColor")
     isFilling = false;
+    isPainting = false;
     ctx.strokeStyle = colorNow;    
     modeBtn.innerText = "Drawing Mode"
 }
 
 function onFillBtnClick() {
     isFilling = true;
+    isPainting = false;
     modeBtn.innerText = "Filling Mode"
 }
 
+function onPaintModeClick() {
+    isPainting = true;
+    isFilling = false;
+    modeBtn.innerText = "Painting Mode"
+}
+
+paintBtn.addEventListener("click", onPaintModeClick)
 drawBtn.addEventListener("click", onDrawBtnClick)
 fillBtn.addEventListener("click", onFillBtnClick)
 //밈 만들기
@@ -145,6 +168,8 @@ function textAdd(event) {
     const text = textInput.value;
     if (text !== "") {
         ctx.save();
+        ctx.fillStyle = localStorage.getItem("currentColor")
+        ctx.strokeStyleStyle = localStorage.getItem("currentColor")
         ctx.font = "68px serif"
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore();
@@ -164,8 +189,3 @@ function onSaveClick() {
 }
 
 saveBtn.addEventListener("click", onSaveClick);
-
-// 폰트 저장 시도
-let f = new FontFace('old standard tt', url('oldstandardtt-regular-webfont.woff'))
-
-f.load();
