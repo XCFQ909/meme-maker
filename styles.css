@@ -41,14 +41,14 @@ body {
 .color-options {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     position: absolute;
-    left: -90px;
+    left: -100px;
 }
 
 .color-option {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     cursor: pointer;
     border-radius: 50%;
     border: 3px solid white;
@@ -133,22 +133,22 @@ input#text {
 #save {
     position: absolute;
     white-space: nowrap;
-    bottom: -40px;
-    left: 660px;
+    top: -49px;
     padding: 8px;
 }
 
 #destroy-btn {
     background-color: crimson;
     position: absolute;
-    left: 716px;
-    top: -49px;
     padding: 0;
+    top: -49px;
+    right: 10px;
     height: 30px;
-    width: 80px;
+    width: 40px;
     border-radius: 0;
     font-size: larger;
     border: 3px solid black;
+    color: black;
 }
 
 /* mode */
@@ -158,7 +158,7 @@ input#text {
     align-items: flex-start;
     position: absolute;
     left: 830px;
-    top: 20px;
+    top: 6px;
     gap: 30px;
 }
 
@@ -200,10 +200,8 @@ input#text {
 
 @media screen and (max-width: 1299px) {
     #media {
-        position: fixed;
-        top: 0;
-        box-sizing: border-box;
-        z-index: 5;
+        position: absolute;
+        z-index: 100;
         height: 100%;
         width: 100%;
         background-color: beige;
@@ -214,14 +212,7 @@ input#text {
         color: black;
         font-family: 'Times New Roman', Times, serif;
     }
-}
-
-/* header */
-
-#logo {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
+    #main {
+        display: none;
+    }
 }
