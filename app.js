@@ -76,6 +76,9 @@ lineWidth.addEventListener("change", onLineWidthChange)
 function onColorChange(event) {
     ctx.strokeStyle = event.target.value;
     ctx.fillStyle = event.target.value;
+    if ( isFilling === false && isPainting === false) {
+        modeBtn.innerText = "Drawing Mode"
+    }
     localStorage.setItem("currentColor", event.target.value)
 }
 
@@ -89,6 +92,9 @@ function onColorClick(event) {
     ctx.strokeStyle = colorValue;
     ctx.fillStyle = colorValue;
     color.value = colorValue;
+    if ( isFilling === false && isPainting === false) {
+        modeBtn.innerText = "Drawing Mode"
+    }
 }
 
 colorOptions.forEach((colorOption) => colorOption.addEventListener("click", onColorClick))
